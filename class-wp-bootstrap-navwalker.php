@@ -7,9 +7,9 @@
  * @wordpress-plugin
  * Plugin Name: WP Bootstrap Navwalker
  * Plugin URI:  https://github.com/wp-bootstrap/wp-bootstrap-navwalker
- * Description: A custom WordPress nav walker class to implement the Bootstrap 4 navigation style in a custom theme using the WordPress built in menu manager.
- * Author: Edward McIntyre - @twittem, WP Bootstrap, William Patton - @pattonwebz, IanDelMar - @IanDelMar
- * Version: 4.3.0
+ * Description: A custom WordPress nav walker class to implement the Bootstrap 5 navigation style in a custom theme using the WordPress built in menu manager.
+ * Author: Edward McIntyre - @twittem, WP Bootstrap, William Patton - @pattonwebz, IanDelMar - @IanDelMar, Alexaner Thiele - @thielander
+ * Version: 4.5.0
  * Author URI: https://github.com/wp-bootstrap
  * GitHub Plugin URI: https://github.com/wp-bootstrap/wp-bootstrap-navwalker
  * GitHub Branch: master
@@ -189,6 +189,7 @@ if ( ! class_exists( 'WP_Bootstrap_Navwalker' ) ) :
 			 *
 			 * @since WP 3.0.1
 			 * @since WP 4.1.0 The `$depth` parameter was added.
+    			 * @since WP 4.5.0 Changed to data-bs-toggle & data-bs-target by @thielander.
 			 *
 			 * @param string           $menu_id The ID that is applied to the menu item's `<li>` element.
 			 * @param WP_Nav_Menu_Item $item    The current menu item.
@@ -213,8 +214,8 @@ if ( ! class_exists( 'WP_Bootstrap_Navwalker' ) ) :
 			// If the item has_children add atts to <a>.
 			if ( $this->has_children && 0 === $depth ) {
 				$atts['href']          = '#';
-				$atts['data-toggle']   = 'dropdown';
-				$atts['aria-expanded'] = 'false';
+				$atts['data-bs-toggle']   = 'dropdown';
+				$atts['data-bs-target'] = 'false';
 				$atts['class']         = 'dropdown-toggle nav-link';
 				$atts['id']            = 'menu-item-dropdown-' . $item->ID;
 			} else {
